@@ -30,11 +30,12 @@ describe Project do
       expect(project1 == project2).to eq true
     end
   end
-#
-#   context '.all' do
-#     it 'is empty to start' do
-#       expect(Project.all).to eq []
-#     end
+
+  describe '.all' do
+    it 'is empty to start' do
+      expect(Project.all).to eq []
+    end
+  end
 #
 #     it 'returns all projects' do
 #       project1 = Project.new({:title => 'Teaching Kids to Code', :id => nil})
