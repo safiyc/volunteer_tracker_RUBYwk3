@@ -10,4 +10,16 @@ class Volunteer
   def ==(another_volunteer)
     self.name().==(another_volunteer.name()).&(self.project_id().== (another_volunteer.project_id()))
   end
+
+  def self.all
+  returned_volunteers = DB.exec("SELECT * FROM volunteers;")
+  volunteers = []
+  returned_volunteers.each() do |volunteer|
+    name = volunteer.fetch("name")
+    id = volunteer.fetch("id").to_i()
+    project_id = volunteer.fetch("project_id").to_i()
+    volunteers.push(Volunteer.new({:name => name, :id => id, :project_id => project_id}))
+  end
+  volunteers
+  end
 end
