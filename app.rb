@@ -7,26 +7,6 @@ require("pg")
 
 DB = PG.connect({:dbname => "volunteer_tracker_test"})
 
-# get('/') do
-#   @blank_field_error = ""
-#   @projects = Project.all
-#   erb(:index)
-# end
-#
-# post('/') do
-#   title = params["title"]
-#   @blank_field_error = ""
-#   if (title == "")
-#     @blank_field_error = "Please enter a project."
-#   else
-#     project = Project.new({:title => title, :id => nil}).save
-#   end
-#   @projects = Project.all
-#   erb(:index)
-# end
-
-# ---------========---
-
 get("/") do
   @projects = Project.all()
   erb(:index)
@@ -46,7 +26,6 @@ get("/projects/:id") do
   erb(:project)
 end
 
-
 patch("/projects/:id") do
   title = params.fetch("title")
   @project = Project.find(params.fetch("id").to_i())
@@ -58,4 +37,11 @@ end
 get("/projects/:id/edit") do
   @project =  Project.find(params.fetch("id").to_i())
   erb(:project_edit)
+end
+
+delete("/:id") do
+  @project = Project.find(params.fetch("id").to_i)
+  @project.delete
+  @projects = Project.all
+  erb(:index)
 end
