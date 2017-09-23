@@ -1,33 +1,23 @@
+
 <h1>Welcome!</h1>
+<br />
 
-<div class="container">
-  <a href="/lists">View All Lists</a>
-  <a href="/lists/new">Add New List</a>
-</div>
+<h4>Create a new project:</h4>
 
-<h3>Create a new list:</h3>
-
-<form action="/lists" method="post">
-  <label for="name">List name</label>
-  <input id="name" name="name" type="text">
-
-  <button type="submit">Add List</button>
+<form action="/" method="post">
+  <input id="title" name="title" type="text">
+  <button type="submit">Create Project</button>
 </form>
+<br />
 
+<h4>Current Projects:</h4>
 
-<h1>Your Current Lists</h1>
-
-<% if @lists.any?() %>
-  <h3>Here are your lists:</h3>
-
+<% if @projects.any?() %>
   <ul>
-    <% @lists.each() do |list| %>
-      <li><a href="/lists/<%= list.id()%>"><%= list.name() %></a> </li>
+    <% @projects.each() do |project| %>
+      <li><a href="/projects/<%=project.id()%>"><%= project.title() %></a> </li>
     <% end %>
   </ul>
-
 <% else %>
-
-    <p>There are no lists yet!</p>
-
+  <p>There are no current projects.</p>
 <% end %>
