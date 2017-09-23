@@ -5,8 +5,8 @@
 
 <h4>Add volunteers:</h4>
 
-<form action="/" method="post">
-  <input id="title" name="title" type="text">
+<form action="/projects/<%=@project.id%>" method="post">
+  <input id="name" name="name" type="text">
   <button type="submit">Create Volunteer</button>
 </form>
 <br />
@@ -16,7 +16,7 @@
 <% if @volunteers.any?() %>
   <ul>
     <% @volunteers.each() do |volunteer| %>
-      <li><a href="/volunteers/<%=volunteer.id()%>"><%= volunteer.name() %></a> </li>
+      <li><a href="/volunteers/<%=volunteer.id%>"><%= volunteer.name() %></a> </li>
     <% end %>
   </ul>
 <% else %>

@@ -45,3 +45,13 @@ delete("/:id") do
   @projects = Project.all
   erb(:index)
 end
+
+# post("/projects/:id") do
+#   name = params.fetch("name")
+#   project_id = params.fetch("project_id").to_i()
+#   project = Project.find(project_id)
+#   volunteer = Volunteer.new({:name => name, :id => nil, :project_id => project_id})
+#   volunteer.save()
+#   @volunteers = @project.volunteers
+#   erb(:project)
+# end
