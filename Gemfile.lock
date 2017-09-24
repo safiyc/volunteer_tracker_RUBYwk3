@@ -63,7 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (~> 2.8)
+  capybara
   pg
   pry
   rspec

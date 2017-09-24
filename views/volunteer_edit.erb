@@ -1,0 +1,10 @@
+<h1><%= @volunteer.name %></h1>
+<br />
+
+<h4>Rename:</h4>
+
+<form style="display: inline" action="/volunteers/<#%= @volunteer.id() %>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input id="name" name="name" type="text">
+  <button type="submit">Update Volunteer</button>
+</form>
