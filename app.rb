@@ -49,7 +49,6 @@ end
 post("/projects/:id") do
   name = params.fetch("name")
   project_id = params.fetch("project_id").to_i()
-  # what does this do again? Why not 'params.fetch("id").to_i'?
   @project = Project.find(project_id)
   volunteer = Volunteer.new({:name => name, :id => nil, :project_id => project_id})
   volunteer.save()
@@ -57,14 +56,15 @@ post("/projects/:id") do
   erb(:project)
 end
 
-# patch("/volunteers/:id") do
-#   name = params.fetch("name")
-#   @volunteer = Volunteer.find(params.fetch("id").to_i())
-#   @volunteer.update({:name => name})
-#   erb(:project)
-# end
-#
-# get("/volunteers/:id/edit") do
-#   @volunteer = Volunteer.find(params.fetch("id").to_i())
-#   erb(:volunteer_edit)
-# end
+get("/volunteers/:id/edit") do
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  erb(:volunteer_edit)
+end
+
+
+patch("/volunteers/:id") do
+  name = params.fetch("name")
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  @volunteer.update({:name => name})
+  erb(:volunteer_edit)
+end

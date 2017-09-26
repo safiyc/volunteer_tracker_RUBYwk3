@@ -14,12 +14,14 @@
 
 <h4>Current volunteers:</h4>
 
-<% if @volunteers.any?() %>
+<% if @project.volunteers.any?() %>
   <ul>
-    <% @volunteers.each() do |volunteer| %>
+    <% @project.volunteers.each() do |volunteer| %>
       <li><a href="/volunteers/<%=volunteer.id%>/edit"><%= volunteer.name() %></a> </li>
     <% end %>
   </ul>
 <% else %>
   <p>There are no current volunteers.</p>
 <% end %>
+
+<a href="/">Home</a>
